@@ -1,0 +1,85 @@
+#MAIN SCRIPT
+
+#-----
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from flask import Flask, render_template, request, redirect, url_for
+
+#Import modules. Selenium - opens a web browser. Flask - directs python code into html.
+
+app = Flask(__name__)
+#Create a program that will receive python code, and will then send to an html file.
+
+@app.route('/', methods=['POST', 'GET']) #POST method initiates once an answer is submitted.
+def home():
+    if request.method == 'POST':
+        user = request.form['user'] #Receives data from html, transfering the username obtained from the HTML page text box back to this python script.
+        return redirect(url_for('user', user=user)) #Redirect website to another website branch which will initiate the web scraping code once username is received.
+    else:
+        return render_template('index.html')#Links index.html file to create and edit the main page from.
+
+
+@app.route('/<user>')#The website is redirected the other branch of the site which will be named after the user inputted in the text-box.
+def user(user):
+    user = user
+    if user == 'style.css': #Glitch: Flask opened another driver to scrape the details of user 'style.css'. This prevents that unintended action.
+        exit()
+    url = 'https://www.duolingo.com/profile/' + str(user)
+    page = webdriver.Chrome()
+    page.get(url)
+
+    data = page.find_elements(By.CLASS_NAME, '_3gX7q') #The class '_3gX7q' in the website contains user statistics.
+    statlist = []
+
+
+    for b in data: #Integrate all statistics into one single list.
+        text = b.text
+        print(text)
+        statlist.append(text)
+
+    print(statlist)
+
+    statlist = statlist
+
+    days = statlist[0]
+    xp = statlist[1]
+    lg = statlist[2]
+    fs = statlist[3]
+
+    print(user + "'s Day Streak is: " + days)
+    print(user + "'s Total XP is: " + xp)
+    print(user + "'s Current League is: " + lg)
+    print(user + "'s Top 3 finishes are: " + fs)
+
+    courses = url + '/courses' #URL that will redirect the code to scrape information from the languages that the user is learning.
+
+    page.get(courses)
+
+    lang = page.find_elements(By.CLASS_NAME, '_3YAtF')
+    langs = [] 
+
+    for tab in lang:
+        ab = tab.text
+        langs.append(ab)
+        print(langs) #Integrate all registered languages into a list.
+
+    lan = 0
+    for i in range(0, len(langs)): #Count the number of languages from the registered languages.
+        lan += 1 
+
+
+    print(user + ' is learning ' + str(lan) + ' languages. The languages they are learning are ', end = '') 
+    print(*langs, sep = ', ', end = '')
+    langs = str(langs)
+    langs = langs.replace("[","")
+    langs = langs.replace("]","")
+    print('.')
+    return render_template('lingo.html', ds=days, xp=xp, lg=lg, fs=fs, player=user, lan=str(lan), langs=langs)
+
+
+
+if __name__ == "__main__":
+    app.run()
+
+# Sources: Flask, Selenium, 'Tech With Tim' 

@@ -1,0 +1,40 @@
+<!-- index.html (main page) -->
+
+<!-------------->
+
+
+<!DOCTYPE html>
+<html>
+
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> <!-- Without this, favicon is run as a 'username' -->
+<head>
+   <title>Duolingo Tracker</title>
+</head>
+<body>
+    <h1><div>Duolingo Tracker</div></h1>
+
+
+    <div class="dlingo">
+    <img src="https://d35aaqx5ub95lt.cloudfront.net/images/f2a2e608c854822ad2563a09595e7827.png" alt="Duolingo" >
+    </div>
+
+<!-- Text box to input username  -->
+    <div class="main">
+    <label for="username"> INPUT USERNAME </label>
+    <form action="#" method="post"> <!-- Form action sends the text to the script.  -->
+        <input type="text" id = "user" name="user" required
+            minlength="1" maxlength ='20' size="20"/>
+        <input type="submit" value="submit">
+    </div>
+
+
+
+    <div class="rights">
+        <p> This website does not have any affiliation with Duolingo or its application. This is a non-profit educational project for AP Computer Science.</p>
+    </div>
+
+
+    </form>
+    
+</body>

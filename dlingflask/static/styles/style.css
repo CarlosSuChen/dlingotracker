@@ -1,0 +1,61 @@
+/* Style.css to decorate the pages */
+
+/*  ---------  */
+
+
+title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.rights {
+    margin: px;
+    color: rgb(133, 195, 27);
+}
+
+.main {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border: 5px;
+    width: 15%;
+    color: rgb(133, 195, 27);
+}
+
+.dlingo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 37%;
+}
+
+body {
+    background-color: rgb(77, 155, 73);
+    opacity: .9;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(133, 195, 27);
+    font-weight: bold;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+.box {
+    text-align: center;
+    color: rgb(133, 195, 27);
+}
+
+.rights {
+    text-align: center;
+    color: rgb(133, 195, 27);
+    font-weight: bold;
+}
+
+.again {
+    text-align: center;
+}

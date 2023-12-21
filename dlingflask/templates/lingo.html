@@ -1,0 +1,35 @@
+<!-- lingo.html (User data) -->
+
+
+
+<!-------------->
+
+<!DOCTYPE html>
+<html>
+    
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='styles/style.css') }}"> <!-- Link to Style.Css -->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">  <!-- Without this, favicon is run as a 'username' -->
+    
+    <body>
+    <div class="box">
+        <p>{{player}}'s daystreak is {{ds}}.</p>
+        <p>{{player}}'s XP is {{xp}}.</p>
+        <p>{{player}}'s League is {{lg}}.</p>
+        <p>{{player}}'s Top 3 Finishes are {{fs}}.</p>
+        <p>{{player}} is learning {{lan}} languages.</p>
+        <p>{{player}} is learning {{langs}}.</p>
+    </div>
+    <div class="again">
+        <a href="/">Try Again!</a> 
+    </div>
+    <div class="rights">
+        <p> This website does not have any affiliation with Duolingo or its application. This is a non-profit educational project for AP Computer Science.</p>
+    </div>
+    <div class="dlingo">
+        <img src="https://d35aaqx5ub95lt.cloudfront.net/images/f2a2e608c854822ad2563a09595e7827.png" alt="Duolingo" >
+    </div>
+
+</body>
+
+
+</html>
